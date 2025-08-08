@@ -11,11 +11,11 @@ const uploadImage = async (imagePath) => {
     try {
         const result = await cloudinary.uploader.upload(imagePath, {
             folder: 'new-file',
-            public_id: Date.now().toString(), // filename inside folder
+            // public_id: Date.now().toString(), // filename inside folder
             transformation: [{ width: 800, height: 800, crop: "limit" }],
         });
         console.log('Image uploaded successfully:', result.url);
-        return result.url;
+        return result;
     } catch (error) {
         console.error('Error uploading image:', error);
         throw error;
